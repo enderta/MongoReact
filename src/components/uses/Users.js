@@ -28,6 +28,7 @@ function Users() {
             <div className={'row'}>
                 {users.map(user => (
                     <div className={'col-md-4'}>
+                        <br/>
                         <Card key={user._id}>
                             <Card.Img variant="top" src={user.picture} />
                             <Card.Body>
