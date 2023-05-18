@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, Card, Modal, ModalFooter} from "react-bootstrap";
 import Single from "./Single";
 import EditDelete from "./EditDelete";
+import AddUser from "./AddUser";
 function Users() {
     const [users, setUsers] = React.useState([]);
     const [modalShow, setModalShow] = React.useState(false);
@@ -20,6 +21,9 @@ function Users() {
     return (
         <div>
             <h1>Users</h1>
+            <AddUser>
+                + Add User
+            </AddUser>
           <div className={'container'}>
             <div className={'row'}>
                 {users.map(user => (
