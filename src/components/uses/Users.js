@@ -14,6 +14,7 @@ function Users() {
             .then(users => setUsers(users.users));
     }, []);
 
+
     const handleModalClose = () => setModalShow(false);
     const handleModalShow = () => setModalShow(true);
 
@@ -21,6 +22,8 @@ function Users() {
     return (
         <div>
             <h1>Users</h1>
+         
+
             <AddUser>
                 + Add User
             </AddUser>

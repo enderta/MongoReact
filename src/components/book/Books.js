@@ -5,10 +5,6 @@ import { Button } from 'react-bootstrap';
 function Books(props) {
     const [books, setBooks] = useState([]);
 
-    useEffect(() => {
-        fetchBooks();
-    }, []);
-
     const client = new ApolloClient({
         uri: 'http://localhost:5000/graphql',
         cache: new InMemoryCache()
@@ -38,6 +34,10 @@ function Books(props) {
             });
     };
 
+    useEffect(() => {
+        fetchBooks();
+    }, []);
+
     const handleCheck = index => {
         setBooks(prevBooks => {
             const updatedBooks = [...prevBooks];
@@ -64,11 +64,11 @@ function Books(props) {
                                     <p className="card-text">{book.author.name}</p>
                                     {book.check ? (
                                         <h6 className="card-subtitle mb-2 text-muted" onClick={() => handleCheck(index)}>
-                                            Read ✅
+                                            Read: ✅
                                         </h6>
                                     ) : (
                                         <h6 className="card-subtitle mb-2 text-muted" onClick={() => handleCheck(index)}>
-                                            Not Read ❌
+                                           Read: ❌
                                         </h6>
                                     )}
                                 </div>
