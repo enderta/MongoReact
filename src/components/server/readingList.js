@@ -36,7 +36,7 @@ app.get('/books', async(req, res) => {
         }else{
             //serach for a specific book and author
 
-            const allBooks = await pool.query("SELECT * FROM books WHERE title LIKE $1 OR author LIKE $1", [`%${searchTerm}%`]);
+            const allBooks = await pool.query("SELECT * FROM books WHERE title ILIKE $1 OR author ILIKE $1", [`%${searchTerm}%`]);
             res.status(200).json({
                 status: "success",
                 message:`${allBooks.rows.length} books found`,
