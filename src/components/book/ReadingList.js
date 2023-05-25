@@ -45,7 +45,7 @@ function ReadingList(props) {
             .then(res => res.json())
             .then(data => {
                 fetchBooks();
-                window.location.reload();
+               // window.location.reload();
             }
             );
     }
@@ -54,43 +54,46 @@ function ReadingList(props) {
     }
     return (
         <div>
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-6">
-                        <h1>Reading List</h1>
-                        <div className="input-group mb-3">
-                            <input type="text" className="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2"
-                                value={searchTerm}
-                                   onChange={handleSearch} />
-                            <div className={'row'}>
-                                {books.map((book, index) => (
-                                    <div className={'col-md-4'} key={index}>
-                                        <br />
-                                        <div className="card">
-                                            <div className="card-body">
-                                                //image
-                                                <img src={book.image_url} alt={book.title} />
-                                                <h5 className="card-title">{book.title}</h5>
-                                                <p className="card-text">{book.author}</p>
-                                                {book.is_read ? (
-                                                    <h6 className="card-subtitle mb-2 text-muted" onClick={() => handleCheck(index)}>
-                                                        Read: ✅
-                                                    </h6>
-                                                ) : (
-                                                    <h6 className="card-subtitle mb-2 text-muted" onClick={() => handleCheck(index)}>
-                                                        Read: ❌
-                                                    </h6>
-                                                )}
+            {
+                loading ? <h1>Loading...</h1> :
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-6">
+                                <h1>Reading List</h1>
+                                <div className="input-group mb-3">
+                                    <input type="text" className="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2"
+                                           value={searchTerm}
+                                           onChange={handleSearch} />
+                                    <div className={'row'}>
+                                        {books.map((book, index) => (
+                                            <div className={'col-md-4'} key={index}>
+                                                <br />
+                                                <div className="card">
+                                                    <div className="card-body">
+                                                        //image
+                                                        <img src={book.image_url} alt={book.title} />
+                                                        <h5 className="card-title">{book.title}</h5>
+                                                        <p className="card-text">{book.author}</p>
+                                                        {book.is_read ? (
+                                                            <h6 className="card-subtitle mb-2 text-muted" onClick={() => handleCheck(index)}>
+                                                                Read: ✅
+                                                            </h6>
+                                                        ) : (
+                                                            <h6 className="card-subtitle mb-2 text-muted" onClick={() => handleCheck(index)}>
+                                                                Read: ❌
+                                                            </h6>
+                                                        )}
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                ))}
+                                        ))}
 
-        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+            }
         </div>
     );
 }
