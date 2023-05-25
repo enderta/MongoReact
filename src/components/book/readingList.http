@@ -1,0 +1,21 @@
+
+###
+http://localhost:5000/books
+
+### GET
+http://localhost:5000/books
+
+### POST
+http://localhost:5000/books
+
+{
+    "title": "The Hobbit",
+    "author": "J.R.R. Tolkien",
+    "image_url": "https://images-na.ssl-images-amazon.com/images/I/51ZQ7NB7KML._SX331_BO1,204,203,200_.jpg",
+    "is_read": false
+}
+add header: Content-Type: application/json
+
+### GET
+http://localhost:5000/books/1
+
